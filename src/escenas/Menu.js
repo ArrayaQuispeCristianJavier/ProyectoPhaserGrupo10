@@ -17,6 +17,7 @@ class Menu extends Phaser.Scene{
     this.scene.start('Escena1');
  })
 }
+
 }
 export default Menu;
 
