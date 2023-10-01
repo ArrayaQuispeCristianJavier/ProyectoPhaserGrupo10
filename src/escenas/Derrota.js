@@ -1,14 +1,13 @@
 class Derrota extends Phaser.Scene{
     constructor(){
-        super({key: 'gameover'});
-       
-    }
-    preload(){
-        this.load.image('gameover','dirreciondelaimagen.png');
-    }
-    create(){
-        this.add.image(410,250,'background');
-        this.gameoverImage = this.add.image(400,90,'gameover');
-    }
+        super("Derrota");
+        } 
+
+ preload(){
+    this.load.image('GameOver', '../public/img/Derrota.jpg');
+ }
+ create(){
+    this.add.image(400,300,'GameOver');
+ }
 }
 export default Derrota;
