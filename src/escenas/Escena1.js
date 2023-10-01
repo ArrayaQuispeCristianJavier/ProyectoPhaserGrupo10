@@ -128,8 +128,15 @@
          if (this.cursors.up.isDown && this.player.body.touching.down) {
          this.player.setVelocityY(-330);
          }
+         if (this.score == 40) {
+            this.scene.start('Escena2');
+                     
+           }
+           
+         
    }
-
+   
+   
    //Colisión entre el jugador y las estrellas
    collectStar(player, star) {
    star.disableBody(true, true);
@@ -153,7 +160,7 @@
       this.physics.pause();
       player.setTint(0xff0000);
       player.anims.play('turn');
-      gameOver = true;
+      Derrota = true;
       }
    }
 
