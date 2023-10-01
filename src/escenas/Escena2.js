@@ -130,10 +130,10 @@ preload(){
        this.player.setVelocityY(-330);
        }
        
-       /*if (this.score == 180) {
+       if (this.score == 100) {
           this.scene.start('Victoria');
                    
-         }* //cambiar este metodo if si se cumple que salte la escena de victoria*/
+         }
          
        
  }
@@ -147,20 +147,23 @@ preload(){
        this.stars.children.iterate(function (child) {
        child.enableBody(true, child.x, 0, true, true);
        });
-       let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-       let bomb = this.bombs.create(x, 16, 'bomb');
-       bomb.setBounce(1);
-       bomb.setCollideWorldBounds(true);
-       bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+       //Si se hagarra toda la estrellas genera las bombas
+       for(let i = 0; i < 4; i++){
+       let x = Phaser.Math.Between(100,700);//Genera una posicion aleatoria entre 100 y 700
+       let bomb = this.bombs.create(x,0,'bomb');//Se crea y lanza una bomba aleatoreamente en la posicion X 
+       bomb.setBounce(1);//Rebote de la bomba
+       bomb.setCollideWorldBounds(true);//Sirve para que la bomba choque con los limite del mundo
+       bomb.setVelocity(Phaser.Math.Between(-200,200),20);//direccion y velocidad de la bomba
        }
     }
+ }
     
     
     hitBomb(player, bomb) {
        this.physics.pause();
        player.setTint(0xff0000);
        player.anims.play('turn');
-       Derrota = true;
+       this.scene.start('Derrota');
        }
 }
 

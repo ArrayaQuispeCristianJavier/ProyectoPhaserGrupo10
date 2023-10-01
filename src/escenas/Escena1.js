@@ -81,9 +81,9 @@
       this.stars = this.physics.add.group({
          key: 'star',
          // cantidad de estrellas
-         repeat: 3,
+         repeat: 4,
          //empieza en la posición x e y, se repite cada 70 en x
-         setXY: { x: 12, y: 0, stepX: 70 } 
+         setXY: { x: 50, y: 0, stepX: 70 } 
          });
 
          //Se agrega el rebote entre el grupo de estrelas
@@ -128,7 +128,7 @@
          if (this.cursors.up.isDown && this.player.body.touching.down) {
          this.player.setVelocityY(-330);
          }
-         if (this.score == 40) {
+         if (this.score == 80) {
             this.scene.start('Escena2');
                      
            }
