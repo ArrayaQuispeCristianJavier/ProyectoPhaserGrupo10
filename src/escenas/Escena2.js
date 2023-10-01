@@ -34,6 +34,9 @@ preload(){
     this.platforms.create(100,100,'ground');
     this.platforms.create(700,100,'ground');
     
+    //Agrega al jugador con fisicas y definido como un sprite
+    this.player = this.physics.add.sprite(100,100,'dude');
+
      /*Define el rebote entre el sprite y el objeto o el piso, su funcion es (0.2) el 0 signfica que no hay rebote y el 2 si hay rebote*/
      this.player.setBounce(0.2);
 
@@ -78,7 +81,7 @@ preload(){
      this.stars = this.physics.add.group({
         key: 'star',
         // cantidad de estrellas
-        repeat: 4,
+        repeat: 3,
         //empieza en la posición x e y, se repite cada 70 en x
         setXY: { x: 100, y:300, stepX: 150 } 
         });
@@ -104,13 +107,14 @@ preload(){
         this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this);
         
         //Para controlar el puntaje
-        this.scoreText = this.add.text(16, 16, 'score: ', { fontSize: '32px', fill: '#000' });
+        this.scoreText = this.add.text(16, 16, 'score: ' + this.score, { fontSize: '32px', fill: '#000' });
 
         //Para agregar las bombas
         this.bombs = this.physics.add.group();
         this.physics.add.collider(this.bombs, this.platforms);
         this.physics.add.collider(this.player, this.bombs, this.hitBomb, null, this);
- 
+        
+        
   }
   /*Es un metodo que se va actualizar todo el tiempo osea es un bucle infinito que espera que se ejecute alguna accion, en este caso se encargara de realizar los movimiento del personaje*/
   update(){
@@ -130,7 +134,7 @@ preload(){
        this.player.setVelocityY(-330);
        }
        
-       if (this.score == 100) {
+       if (this.score == 180) {
           this.scene.start('Victoria');
                    
          }
