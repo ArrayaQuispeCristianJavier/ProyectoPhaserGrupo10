@@ -2,7 +2,7 @@ class Escena2 extends Phaser.Scene{
 constructor(){
 super("Escena2");
 this.scoreText = "";
-this.score = 0;
+this.score = 100;
 }
 
 /*Precarga de los archivos para escena actual y siguiente escena, los recursos tiene un nombre e unico*/ 
