@@ -1,4 +1,4 @@
-  class Escena1 extends Phaser.Scene{
+class Escena1 extends Phaser.Scene{
    
    
    constructor(){
@@ -27,8 +27,7 @@
 
       /*Va a poder ejecutar las escena de preload() y agregar elementos a la escena*/ 
       create(){
-      //Agrega al jugador con fisicas y definido como un sprite
-      this.player = this.physics.add.sprite(100,100,'dude');
+      
 
       this.add.image(400, 300, 'sky');
       //La plataforma se comportara como un obejto fisico que lo afectara las leyes de la fisica, gravedad y colisiones
@@ -39,6 +38,9 @@
       this.platforms.create(600, 400, 'ground');
       this.platforms.create(50, 250, 'ground');
       this.platforms.create(750, 220, 'ground');
+
+      //Agrega al jugador con fisicas y definido como un sprite
+      this.player = this.physics.add.sprite(100,100,'dude');
 
       /*Define el rebote entre el sprite y el objeto o el piso, su funcion es (0.2) el 0 signfica que no hay rebote y el 2 si hay rebote*/
       this.player.setBounce(0.2);
@@ -128,7 +130,7 @@
          if (this.cursors.up.isDown && this.player.body.touching.down) {
          this.player.setVelocityY(-330);
          }
-         if (this.score == 80) {
+         if (this.score == 100) {
             this.scene.start('Escena2');
                      
            }
@@ -160,7 +162,7 @@
       this.physics.pause();
       player.setTint(0xff0000);
       player.anims.play('turn');
-      Derrota = true;
+      this.scene.start('Derrota');
       }
    }
 
